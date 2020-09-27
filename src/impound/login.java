@@ -20,6 +20,7 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+ 
     private String userid,password;
     public login() {
         initComponents();
@@ -146,7 +147,8 @@ public class login extends javax.swing.JFrame {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
                 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL","sanjana","sanjana");
                 Statement st=con.createStatement();
-                ResultSet rs = st.executeQuery("select * from users where username='"+userid+"'");
+                int i =st.executeUpdate("insert into users(username,password) values('"+user+"','"+pass+"')");
+                /*ResultSet rs = st.executeQuery("select * from users where username='"+userid+"'");
                 if(rs.next())
                 {
                     x=rs.getString(2);
@@ -167,7 +169,7 @@ public class login extends javax.swing.JFrame {
                 //ResultSet rs = st.executeQuery("select username from users into x where password='"+pass+"'");
                 //int i =st.executeUpdate("insert into users(username,password)values('Tom','tom')");
                 
-                
+                */
             }
             catch(Exception ex){
                 System.out.println(ex);
